@@ -1,0 +1,11 @@
+<p>hofasdfadsfme works!</p>
+
+<ul class="lista">
+    <li *ngFor='let movie of lista' [class.selected]="movie === selectedMovie" (click)="onSelect(movie)">
+        <a routerLink='/detail/{{movie.Id}}'>
+            <img class='poster' src='{{movie.Poster}}'>
+        </a>
+    </li>
+</ul>
+
+<app-movie-detail [movie]="selectedMovie"></app-movie-detail>
