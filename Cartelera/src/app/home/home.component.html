@@ -1,11 +1,16 @@
-<p>hofasdfadsfme works!</p>
+<input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="Busqueda">
 
 <ul class="lista">
-    <li *ngFor='let movie of lista' [class.selected]="movie === selectedMovie" (click)="onSelect(movie)">
+    <li *ngFor='let movie of lista | filter:searchText' [class.selected]="movie === selectedMovie" (click)="onSelect(movie)" >
         <a routerLink='/detail/{{movie.Id}}'>
-            <img class='poster' src='{{movie.Poster}}'>
+            <div class='tooltip'>
+                <img class='poster' src='{{movie.Poster}}'>
+                <div class="tooltiptext">
+                    <h2>{{movie.Title}}</h2><br>
+                    {{movie.Genre}}<br><br>
+                    {{movie.Language}}
+                </div>
+            </div>
         </a>
     </li>
 </ul>
-
-<app-movie-detail [movie]="selectedMovie"></app-movie-detail>
