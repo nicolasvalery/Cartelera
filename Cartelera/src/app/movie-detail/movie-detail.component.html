@@ -3,13 +3,13 @@
     <div class="grid-item" id="item1">
 
         <h1>{{movie.Title}}</h1> <br>
-        Sinopsis: {{movie.Plot}} <br>
-        Año: {{movie.Year}} <br>
-        Duración: {{movie.Runtime}} <br>
-        Géneros:  {{movie.Genre}} <br>
-        Director: {{movie.Director}} <br>
-        Actores principales: {{movie.Actors}} <br>
-        Premios: {{movie.Awards}} <br><br>        
+        <b>Sinopsis:</b> {{movie.Plot}} <br>
+        <b>Año:</b> {{movie.Year}} <br>
+        <b>Duración:</b> {{movie.Runtime}} <br>
+        <b>Géneros:</b>  {{movie.Genre}} <br>
+        <b>Director:</b> {{movie.Director}} <br>
+        <b>Actores principales:</b> {{movie.Actors}} <br>
+        <b>Premios:</b> {{movie.Awards}} <br><br>        
 
         <div *ngIf="movie.Available == true; else elseBlock"><a routerLink='/reservar/{{movie.Id}}'>
             <button (click)="onSelect(movie)">Reservar</button>
