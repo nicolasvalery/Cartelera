@@ -9,7 +9,12 @@
         Géneros:  {{movie.Genre}} <br>
         Director: {{movie.Director}} <br>
         Actores principales: {{movie.Actors}} <br>
-        Premios: {{movie.Awards}}
+        Premios: {{movie.Awards}} <br><br>        
+
+        <div *ngIf="movie.Available == true; else elseBlock"><a routerLink='/reservar/{{movie.Id}}'>
+            <button (click)="onSelect(movie)">Reservar</button>
+        </a></div>
+        <ng-template #elseBlock><button>No disponible</button></ng-template>
 
     </div>
 

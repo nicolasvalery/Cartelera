@@ -1,0 +1,8 @@
+<h1>Reservaciones para {{movie.Title}}</h1>
+<div *ngIf="reservacion">
+    <label>
+        <input [(ngModel)]="reservacion.nombre" placeholder="Ingresar nombre"><br>
+        <input [(ngModel)]="reservacion.entradas" placeholder="Ingresar cantidad de entradas"/><br>
+    </label>
+</div>
+<button (click)="reservar()">RESERVAR</button>

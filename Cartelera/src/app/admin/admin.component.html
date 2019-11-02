@@ -1,0 +1,8 @@
+<ul class="lista">
+    <li *ngFor='let reservacion of reservaciones'>
+        <div class="tooltiptext">
+            <h2>{{reservacion.nombre}}</h2><br>
+            {{reservacion.pelicula}}: {{reservacion.entrada}} entradas
+        </div>
+    </li>
+</ul>

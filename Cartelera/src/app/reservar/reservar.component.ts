@@ -9,28 +9,30 @@ import { Reservacion } from '../reservacion';
 import { Cartelera } from '../cartelera';
 
 @Component({
-  selector: 'app-movie-detail',
-  templateUrl: './movie-detail.component.html',
-  styleUrls: ['./movie-detail.component.scss']
+  selector: 'app-reservar',
+  templateUrl: './reservar.component.html',
+  styleUrls: ['./reservar.component.scss']
 })
-export class MovieDetailComponent implements OnInit {
+export class ReservarComponent implements OnInit {
 
   @Input() movie: Movie;
   reservaciones: Reservacion[];
   cartelera: Cartelera[];
-  puestos: number;
-  selectedMovie: Movie;
+  reservacion: Reservacion;
 
   constructor(
-    private firebaseService: FirebaseService,
     private route: ActivatedRoute,
-    private location: Location,
-    private movieServiceService: MovieServiceService
+    private firebaseService: FirebaseService,
+    private movieServiceService: MovieServiceService,
   ) { }
 
   ngOnInit() {
 
     this.getMovie();
+
+    this.reservacion.pelicula = this.movie.Title;
+    this.reservacion.nombre = 'test';
+    this.reservacion.entrada = 1;
 
     this.firebaseService.getReservaciones().subscribe(data => {
       this.reservaciones = data.map(e => {
@@ -58,12 +60,8 @@ export class MovieDetailComponent implements OnInit {
       .subscribe(movie => this.movie = movie);
   }
 
-  create(reservaciones: Reservacion) {
-    this.firebaseService.createReservaciones(reservaciones);
+  reservar(): void{
   }
 
-  onSelect(movie: Movie): void {
-    this.selectedMovie = movie;
-  }
 
 }
